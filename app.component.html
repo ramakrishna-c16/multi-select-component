@@ -1,0 +1,117 @@
+<!-- <angular2-multiselect [data]="dropdownList" [(ngModel)]="selectedItems" 
+[settings]="dropdownSettings" 
+(onSelect)="onItemSelect($event)" 
+(onSelectAll)="onSelectAll($event)"
+></angular2-multiselect>\
+
+(shareCheckedList)="shareCheckedList($event)"
+(shareIndividualCheckedList)="shareIndividualCheckedList($event)"  -->
+
+<multi-selector-dropdown
+[list]="list" customtemp="id"
+(shareCheckedList)="shareCheckedList($event)"
+(shareAllSelectedcheckedList)="getAllSelected($event)">
+</multi-selector-dropdown>  
+
+<hr>
+
+<!-- <table class="outer-table">
+    <thead>
+        <tr>
+            <th class="width150">Workstation no</th>
+            <th  class="width150">Tenders</th>
+            <th class="width150">Expected</th>
+            <th class="width150">Actual</th>
+            <th class="width150">Discrepancy</th>
+        </tr>
+    </thead>
+    <tbody >
+            <ng-template let-workstation ngFor [ngForOf]="dataList['WorkStationSessionDetails']">
+                    <tr *ngIf="workstation['ErrorMessage']">
+                        <td >{{workstation.WorkstationIDCommonData && workstation.WorkstationIDCommonData.WorkstationNumber}}</td>
+                        <td  attr.colspan="{{cs}}">{{workstation['ErrorMessage']}}</td>
+                    </tr>
+                    <tr *ngFor="let tender of workstation.RegisterTenderSessionDetail;let i = index">
+                            <td attr.rowspan="{{workstation.RegisterTenderSessionDetail.length}}" *ngIf="i==0">{{workstation.WorkstationIDCommonData && workstation.WorkstationIDCommonData.WorkstationNumber}}</td>
+                            <td>{{tender.TenderDescription || tender.TenderTotals}}</td>
+                            <td>{{tender.Expected.L10nAmount}}</td>
+                            <td>{{tender.Actual.L10nAmount}}</td>
+                            <td>{{tender.Discrepancy.L10nAmount}}</td>
+                            
+                    </tr>
+                  </ng-template>
+                </tbody>
+            </table> -->
+                      
+            <!-- <ng-container *ngFor="let workstation of dataList['WorkStationSessionDetails']">
+                    <tr *ngFor="let tender of workstation.RegisterTenderSessionDetail;let i = index">
+                            <td rowspan="11" *ngIf="i==0">{{workstation.WorkstationIDCommonData && workstation.WorkstationIDCommonData.WorkstationNumber}}</td>                           
+                            <ng-container *ngIf="workstation.RegisterTenderSessionDetail">
+                                <td>{{tender.TenderDescription || tender.TenderTotals}}</td>
+                                <td>{{tender.Expected.L10nAmount}}</td>
+                                <td>{{tender.Actual.L10nAmount}}</td>
+                                <td>{{tender.Discrepancy.L10nAmount}}</td>
+                            </ng-container>                         
+                        </tr>
+            </ng-container>
+      ***************************************************************  
+        <table>
+            <thead>
+                <tr>
+                    <th>Workstation no</th>
+                    <th *ngFor="let header of dataHeader['RegisterTenderSessionDetail']">{{header.TenderDescription || header.TotalDiscrepancy}}</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let workstation of dataList['WorkStationSessionDetails']">
+                <tr *ngIf="workstation['ErrorMessage']">
+                    <td>{{workstation.WorkstationIDCommonData && workstation.WorkstationIDCommonData.WorkstationNumber}}</td>
+                    <td attr.colspan="{{cs}}">{{workstation['ErrorMessage']}}</td>
+                </tr>
+                
+                <tr *ngIf="workstation['RegisterTenderSessionDetail'] && workstation.WorkstationIDCommonData">
+                    <td>{{workstation.WorkstationIDCommonData.WorkstationNumber}}</td>
+                    <td *ngFor="let tender of workstation['RegisterTenderSessionDetail'];let i=index">{{tender.Actual && tender.Actual.L10nAmount || tender.Discrepancy.L10nAmount}}</td>           
+                </tr>
+               
+                <tr *ngIf="!workstation.WorkstationIDCommonData" >
+                    <td >{{workstation.GrandTotal }}</td>
+                    <td *ngFor="let tender of workstation['RegisterTenderSessionDetail']">{{tender.Actual && tender.Actual.L10nAmount || tender.Discrepancy.L10nAmount}}</td>
+                </tr>
+            </tbody>
+        </table>
+            *************************************************************
+    -->
+
+<!-- <table>
+    <thead>
+        <tr>
+            <th>Transaction Date &amp; Time</th>
+            <th>Session</th>
+            <th>Workstation no</th>
+            <th>Transaction type</th>
+            <th>Tender</th>
+            <th>Amount</th>
+            <th>Transaction ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let transaction of dataList">
+            <td>{{transaction.TransactionDateTime}}</td>
+            <td>{{transaction.SessionID}}</td>
+            <td>{{transaction.WorkstationID && transaction.WorkstationID.value}}</td>
+            <td>{{transaction.TransactionType}}</td>
+            <td >{{transaction.Tender || '-'}}</td>
+            <td>{{(transaction.Amount&&transaction.Amount.L10nAmount) || '-'}}</td>
+            <td>{{transaction.TransactionID}}</td>
+        </tr>
+        
+    </tbody>
+</table>
+        ************************************************************************
+-->
+
+<!-- <input [owlDateTime]="dt1" [owlDateTimeTrigger]="dt1" placeholder="Choose Date" 
+ [selectMode]="'range'" (dateTimeChange)='selecteddate($event)' [max]="maxDate" [rangeSeparator]="'-'">
+<owl-date-time #dt1 [pickerType]="'calendar'" ></owl-date-time> 
+****************************************************************************-->
+<my-date-range-picker name="mydaterange" [options]="mydaterangeOptions"  ></my-date-range-picker>

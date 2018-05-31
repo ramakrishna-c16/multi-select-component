@@ -1,0 +1,21 @@
+<div>
+  <h3>Multi select dropdown</h3>
+  <div (mouseleave)="showDropDown=false">
+      <button type="button" class="drop-toggle btn flat" (click)="showDropDown = !showDropDown">
+          <span *ngIf="checkedList.length<=0">Select</span>
+          <span *ngIf="checkedList.length>0">{{checkedList.length}} selected</span>
+          
+      </button>
+      <div class="drop-show" *ngIf="showDropDown">
+          <label >
+              <input type="checkbox"  (change)="selectAll();" [(ngModel)]="selectedAll"/>
+              <span>Select All</span>
+          </label>
+          <label *ngFor="let a of list">
+              <input type="checkbox" [(ngModel)]="a.checked" 
+                  (change)="getSelectedValue(a.checked,a.WorkstationNumber,a.value)" />
+              <span>{{a[customtemp]}}</span>
+          </label>
+      </div>
+  </div>
+</div>
